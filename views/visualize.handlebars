@@ -1,0 +1,28 @@
+{{!The container div for Highcharts chart}}
+<div id="container"></div>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+<script>
+    Highcharts.chart('container', {
+        chart: {
+            type: 'variablepie'
+        },
+        title: {
+            text: 'Categories compared by amount spent(arc) and total purchases(radius)'
+        },
+        tooltip: {
+            headerFormat: '',
+            pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
+                'Amount spent($): <b>{point.y}</b><br/>' +
+                'Number of transactions: <b>{point.z}</b><br/>'
+        },
+        series: [{
+            minPointSize: 10,
+            innerSize: '20%',
+            zMin: 0,
+            name: 'countries',
+            data:  JSON.parse(decodeURIComponent({{{hcData}}}))
+        }]
+    });
+</script>

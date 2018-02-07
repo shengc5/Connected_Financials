@@ -1,0 +1,41 @@
+<div id="container"></div>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+
+<script>
+    Highcharts.chart('container', {
+        chart: {
+            type: 'area',
+            zoomType: 'x',
+            panning: true,
+            panKey: 'shift'
+        },
+        title: {
+            text: 'Your Transaction Daily Rundown'
+        },
+        xAxis: {
+                type: 'datetime'
+        },
+        yAxis: {
+            title: {
+                text: 'Daily Spending'
+            },
+            plotLines: [{
+                value: 200,
+                color: 'red',
+                dashStyle: 'shortdash',
+                width: 2,
+                zIndex: 5,
+                label: {
+                    text: 'Your daily alert'
+                }
+            }]
+        },
+        series: [{
+            name: 'Daily spending',
+            data: {{{hcData}}},
+            tooltip: {
+                valueDecimals: 2
+            }
+        }]
+    });
+</script>

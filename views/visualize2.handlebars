@@ -1,0 +1,59 @@
+{{!The container div for d3.js chart}}
+<div id="container"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
+<script>
+    (function () {
+        var height = 600;
+        var width = 700;
+        var svg = d3.select('#container')
+            .append('svg')
+            .attr('height', height)
+            .attr('width', width)
+        var maxRadi = {{maxRadi}};
+        // mapping from number of transactions to radius of the corresponding circle
+        var radiusScale = d3.scaleSqrt().domain([1, maxRadi]).range([10, 110])
+
+        // When svg loads, move all circles to center and make them not collide with each other
+        var simulation = d3.forceSimulation()
+            .force("x", d3.forceX(width / 2).strength(0.05))
+            .force("y", d3.forceY(height / 2).strength(0.05))
+            .force("collide", d3.forceCollide(function (d) {
+                return radiusScale(d.count) + 3;
+            }))
+
+        d3.queue()
+            .defer(d3.csv, "/trans.csv")
+            .await(ready)
+
+        function ready(error, datapoints) {
+            var node = svg.selectAll("circle")
+                .data(datapoints)
+                .enter().append("g")
+
+            node.append("circle")
+                //Give random colors to each circle
+                .style("fill", function () {
+                    return "hsl(" + Math.random() * 360 + ",100%,50%)";
+                })
+                .attr('r', function (d) {
+                    return radiusScale(d.count)
+                })
+            node.append("text")
+                .text(function (d) {
+                    return d.category
+                })
+                .attr("dx", -5)
+                .attr("dy", ".35em")
+                .attr("text-anchor", "middle")
+
+            simulation.nodes(datapoints)
+                .on('tick', function () {
+                    // When a g element moves, update the coordinates accordingly
+                    node.attr("transform", function (d) {
+                        return "translate(" + d.x + "," + d.y + ")";
+                    })
+                });
+        }
+    })();
+</script>

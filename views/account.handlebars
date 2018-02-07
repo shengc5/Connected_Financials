@@ -1,0 +1,22 @@
+<h3>Account Overview:</h3>
+<br>
+<ul class="collapsible" data-collapsible="accordion">
+  {{#each accounts}}
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons">credit_card</i>
+          <div id="accountName"> {{name}}</div>
+        </div>
+        <div class="collapsible-body">
+            <p id="accountContent">
+                Account Type: {{subtype}}<br>
+                Balances:  <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;-Current: {{balances.current}} <br>
+                {{#if balances.available}}
+                   &nbsp;&nbsp;&nbsp;&nbsp;-Available: {{balances.available}}
+                {{/if}}
+            </p>
+        </div>
+      </li>
+  {{/each}}
+</ul>

@@ -1,0 +1,24 @@
+{
+  "name": "Connected-Account-Management",
+  "version": "1.0.0",
+  "description": "A simple app that manages all your bank accounts",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Sheng Chen",
+  "repository": "",
+  "license": "",
+  "dependencies": {
+    "body-parser": "1.15.x",
+    "envvar": "1.1.x",
+    "express": "4.13.x",
+    "express-handlebars": "^3.0.0",
+    "json2csv": "^3.11.5",
+    "jsonfile": "^4.0.0",
+    "moment": "2.17.x",
+    "mongoose": "^5.0.3",
+    "path": "^0.12.7",
+    "plaid": "2.0.x"
+  }
+}

@@ -1,0 +1,48 @@
+<style>
+	body {
+		padding-left:300px;
+	}
+	#container {
+		padding-top: 5px;
+		width: 850px;
+		height: 600px;
+	}
+	#loginLogo {
+		position:fixed;
+		top:138px;
+		left:20%
+	}
+	#link-btn {
+		left:40%
+	}
+	#loading {
+		display:none
+	}
+	#accountName {
+		font-size:160%
+	}
+	#accountContent {
+		padding-left:55px;
+		font-size:130%
+	}
+	#bodyContainer {
+		padding-left:200px
+	}
+	#amountText {
+		font-size:125%
+	}
+	#switch-btn {
+		position:fixed;
+		top:140px;
+		right:10px
+	}
+	.navTitle {
+		font-size: 25px
+	}
+	.navText {
+		font-size: 18px
+	}
+	#navBotImg {
+		position:fixed;bottom:54px;
+	}
+</style>

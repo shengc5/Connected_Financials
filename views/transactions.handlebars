@@ -1,0 +1,14 @@
+<h3>Transaction History:</h3><br>
+<div class="right"> Showing: 1 - {{transLength}} of {{transLength}}</div>
+<br>
+{{#each transactions}}
+    <div class="card blue-grey">
+        <div class="card-content white-text">
+            <span class="card-title"> {{date}} </span>
+            <br><p>{{name}}</p>
+            <div class="card-action">
+                <p id="amountText" class="right yellow-text">Amount:  ${{amount}}</p>
+            </div>
+        </div>
+    </div>
+{{/each}}
